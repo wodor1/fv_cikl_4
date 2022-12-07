@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Házi feladat: függvények, ciklusok</h2>
+    <b>
+      4. Feladat: Az előző függvényt bővítsd ki úgy, hogy amennyiben nem szám a
+      tömb egyik eleme, akkor próbálja meg a program a parseInt fgv-el
+      átkonvertálni számmá, és ezután újra nézze meg hogy szám e az adott elem.
+      (Vigyázz hogy a NaN típust isNaN() fgv-el tudod ellenőrizni!). Ha igen,
+      adja hozzá, ha nem, jelezze egy console.log-al hogy nem sikerült a
+      konvertálás. const nums = [ 'a', '4', 2, 2, 1, 1]; // 10
+    </b>
+
+    <!-- ez a HTML adatkiíratáshoz kell -->
+    <p style="background-color: yellowgreen" id="data"></p>
+
+    <script>
+      const nums = ["a", 4, "124", NaN, undefined, 2, 2, "b", 1, 1, "67"];
+      let sum = 0;
+
+      function test(y) {
+        const x = parseInt(y); // itt megpróbálja számmá konvertálni
+        if (isNaN(y) === true) {
+          // ha a kapott eredmény nem szám, akkor a konzolra hibaüzenetet ír
+          console.log(y + ": A konvertálás sikertelen volt.");
+        } else if (y === NaN || y === undefined) {
+          // külön a NaN és undefined esetekre
+          console.log(y + ": A konvertálás sikertelen volt.");
+        } else {
+          // ha sikerült számmá alakítani, akkor hozzáadja az összeghez
+          sum += x;
+        }
+      }
+
+      // ez a ciklus végigmegy a tömb elemein, és egy változóban tárolja az összegüket
+      for (i = 0; i < nums.length; i++) {
+        if (typeof nums[i] === "number" && isNaN(nums[i]) === false) {
+          // ha a tömb eleme egy szám, akkor hozzáadja az összeghez
+          sum += nums[i];
+        } else {
+          // ha nem szám, akkor lefuttatja a vizsgálatot
+          y = nums[i];
+          test(y);
+        }
+      }
+
+      console.log("const nums = " + "[" + nums + "];" + " // " + sum);
+      document.getElementById("data").innerHTML =
+        "const nums = " + "[" + nums + "];" + " // " + sum;
+    </script>
+  </body>
+</html>
